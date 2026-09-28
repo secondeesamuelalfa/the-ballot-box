@@ -1,0 +1,275 @@
+:root {
+  --paper: #f7f2e6;
+  --paper-shade: #ece2c8;
+  --ink: #22242e;
+  --ink-soft: #5c5f6e;
+  --line: #cdc0a0;
+  --stamp: #b23a2f;
+  --stamp-dark: #8c2c23;
+  --stamp-ink: #fdf6ec;
+  --ok-green: #3f6b45;
+
+  --font-serif: "Libre Baskerville", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 56px 16px;
+  background:
+    radial-gradient(circle at 20% 0%, #efe6cf 0%, #ddd0ac 65%, #cfc196 100%);
+  font-family: var(--font-serif);
+  color: var(--ink);
+}
+
+.ballot {
+  width: 100%;
+  max-width: 520px;
+  background: var(--paper);
+  border-radius: 4px;
+  padding: 36px 34px 30px;
+  box-shadow:
+    0 24px 50px rgba(40, 30, 10, 0.28),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+.ballot::before {
+  /* torn/perforated top edge feel */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 3px;
+  background-image: radial-gradient(circle, var(--line) 1.5px, transparent 1.6px);
+  background-size: 10px 3px;
+  background-repeat: repeat-x;
+  opacity: 0.7;
+}
+
+.ballot-header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.kicker {
+  margin: 0 0 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+
+.ballot-header h1 {
+  margin: 0 0 6px;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.prompt {
+  margin: 0 0 12px;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.voter-tag {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.voter-id {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ---------- add option ---------- */
+.add-row {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--line);
+  margin-bottom: 4px;
+}
+
+#option-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--ink);
+  padding: 8px 2px;
+}
+
+#option-input:focus {
+  outline: none;
+  border-bottom-color: var(--stamp);
+}
+
+#option-input::placeholder {
+  color: #9a9484;
+  font-style: italic;
+}
+
+.btn-ghost {
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.message {
+  min-height: 1.1em;
+  margin: 6px 2px 18px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--stamp-dark);
+}
+
+.message.ok {
+  color: var(--ok-green);
+}
+
+/* ---------- options list ---------- */
+.options-list {
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--paper-shade);
+}
+
+.option-name {
+  flex: 1;
+  font-size: 16px;
+}
+
+.option-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  min-width: 64px;
+  text-align: right;
+}
+
+.vote-btn {
+  border: 2px solid var(--stamp);
+  color: var(--stamp);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  transition: transform 0.1s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.vote-btn:hover {
+  background: var(--stamp);
+  color: var(--stamp-ink);
+}
+
+.vote-btn:active {
+  transform: rotate(-2deg) scale(0.95);
+}
+
+.vote-btn.voted {
+  border-color: var(--ink-soft);
+  color: var(--ink-soft);
+  cursor: default;
+}
+
+.vote-btn.voted:hover {
+  background: transparent;
+  color: var(--ink-soft);
+}
+
+/* ---------- tally / results ---------- */
+.tally-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.tally h2 {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.perf {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--line);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.results-output {
+  margin: 0;
+  background: var(--paper-shade);
+  border-radius: 3px;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 480px) {
+  .ballot {
+    padding: 28px 20px 24px;
+  }
+
+  .option-row {
+    flex-wrap: wrap;
+  }
+
+  .option-count {
+    order: 3;
+    min-width: 0;
+    text-align: left;
+  }
+}

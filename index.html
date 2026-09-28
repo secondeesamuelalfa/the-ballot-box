@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Ballot Box — Live Poll</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="vs.css" />
+</head>
+<body>
+
+  <main class="ballot" id="app">
+    <header class="ballot-header">
+      <p class="kicker">Live Poll</p>
+      <h1>The Ballot Box</h1>
+      <p class="prompt">Best travel destination?</p>
+      <p class="voter-tag">Voting as <span id="voter-id" class="voter-id"></span></p>
+    </header>
+
+    <form id="add-option-form" class="add-row">
+      <input
+        type="text"
+        id="option-input"
+        placeholder="Propose a new option…"
+        autocomplete="off"
+        maxlength="40"
+      />
+      <button type="submit" class="btn-ghost">Add</button>
+    </form>
+    <p id="form-message" class="message" aria-live="polite"></p>
+
+    <ul id="options-list" class="options-list" aria-live="polite"></ul>
+
+    <section class="tally">
+      <div class="tally-head">
+        <h2>Tally</h2>
+        <span class="perf" aria-hidden="true">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;</span>
+      </div>
+      <pre id="results-output" class="results-output"></pre>
+    </section>
+  </main>
+
+<script src="VS.js"></script>
+</body>
+</html>
