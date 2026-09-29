@@ -1,7 +1,8 @@
 # 🗳️ The Ballot Box — Live Poll
 
-A sleek, interactive live polling system built with Vanilla JavaScript, HTML, and CSS. Designed with a unique "torn paper" ballot aesthetic, this application allows users to dynamically add voting options and cast votes in real-time.
-
+A sleek, interactive live polling system built with Vanilla JavaScript, HTML, and CSS. Designed with a unique "torn paper" ballot aesthetic, this application allows users to dynamically add voting options and cast votes in real-time. 
+## 🚀 Live Demo
+[Click here to preview the Ballot live](https://secondeesamuelalfa.github.io/the-ballot-box/)
 ## ✨ Features
 
 - **Dynamic Polling**: Add custom voting options on the fly.
